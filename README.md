@@ -18,16 +18,44 @@ Design of webserver workflow
 
 Implementation using Python code
 
-## Step 4:yhd
+## Step 4:
 
 Serving the HTML pages.
 
 ## Step 5:
-uhgyhum
+
 Testing the webserver
 # PROGRAM:
-Type your code here
+```
+from http.server import  HTTPServer, BaseHTTPRequestHandler
+
+content = """
+<html>
+<head>
+</head>
+<body>
+<h1>Welcome</h1>
+</body>
+</html>
+"""
+
+class HelloHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header('content-type', 'text/html; charset=utf-8')
+        self.end_headers()
+        self.wfile.write(content.encode())
+
+server_address = ('',80)
+httpd = HTTPServer(server_address,HelloHander)
+httpd.serve_forever()
+```
+
+
 # OUTPUT:
+
+![Alt text](webserver.jpg)
+
 
 # RESULT:
 
